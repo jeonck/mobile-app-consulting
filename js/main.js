@@ -27,12 +27,17 @@ const mermaidDiagrams = {
     E -->|"No"| G["모바일웹 고도화 권장"]
     F -->|"Yes"| H{"예산/운영인력 확보 가능한가?"}
     F -->|"No"| I["PWA 전환 권장"]
-    H -->|"Yes"| J["크로스플랫폼 앱 MVP 개발"]
-    H -->|"No"| K["앱 패키징 권장(WebView/TWA)"]
+    H -->|"Yes"| H1{"네이티브 수준 성능 필요한가?"}
+    H -->|"No"| H2{"기존 웹 자산 활용도 높은가?"}
+    H1 -->|"Yes"| J["크로스플랫폼 앱 MVP 개발"]
+    H1 -->|"No"| H2
+    H2 -->|"Yes"| K["하이브리드 앱 권장(WebView+브릿지)"]
+    H2 -->|"No"| L1["앱 패키징 권장(WebView/TWA)"]
     G --> L["1단계 완료"]
     I --> L
     J --> M["4단계: 점진적 확대"]
     K --> L
+    L1 --> L
     L --> N["정기적 재평가"]
     M --> N`,
 
@@ -43,17 +48,26 @@ const mermaidDiagrams = {
     "모바일웹": [0.15, 0.30]
     "PWA": [0.25, 0.50]
     "앱 래핑": [0.35, 0.45]
+    "하이브리드 앱": [0.45, 0.60]
     "크로스플랫폼": [0.65, 0.75]
     "네이티브": [0.90, 0.90]`,
 
     roadmapFlow: `graph LR
-    S1["1단계: 데이터 수집"] --> S2["2단계: 4개 시나리오 비교"]
+    S1["1단계: 데이터 수집"] --> S2["2단계: 5개 시나리오 비교"]
     S2 --> S3{"3단계: 의사결정"}
     S3 -->|"Go"| S4A["앱 추진"]
     S3 -->|"Hold"| S4B["유지"]
     S3 -->|"PWA"| S4C["PWA 전환"]
     S3 -->|"웹고도화"| S4D["웹 개선"]
-    S4A --> S5["MVP 출시 및 확대"]`
+    S4A --> S4A1{"어떤 방식으로?"}
+    S4A1 -->|"저비용"| S4A2["앱 패키징/TWA"]
+    S4A1 -->|"중저비용"| S4A3["하이브리드 앱"]
+    S4A1 -->|"중고비용"| S4A4["크로스플랫폼 MVP"]
+    S4A1 -->|"고비용"| S4A5["네이티브 앱"]
+    S4A2 --> S5["출시 및 확대"]
+    S4A3 --> S5
+    S4A4 --> S5
+    S4A5 --> S5`
 };
 
 // Configure marked once at load time
@@ -114,6 +128,7 @@ async function renderMermaidDiagrams() {
         '<tr><td><strong>앱 패키징</strong><br>(WebView/TWA)</td><td>기존 웹사이트를 앱 형태로 감싸는 방식입니다.<br>' +
         '<strong>WebView</strong>: 웹페이지를 앱 안에 표시하는 간단한 방식<br>' +
         '<strong>TWA</strong>(Trusted Web Activity): Android 공식 기술로 PWA를 앱처럼 완전 지원</td></tr>' +
+        '<tr><td><strong>하이브리드 앱</strong><br>(WebView+브릿지)</td><td>WebView로 웹 콘텐츠를 표시하면서, 성능이 중요한 기능(GPS·카메라·결제 등)은 <strong>네이티브 브릿지</strong>로 연결합니다.<br>앱 래핑보다 기능이 풍부하고, 크로스플랫폼보다 비용이 낮습니다.</td></tr>' +
         '<tr><td><strong>PWA</strong></td><td>Progressive Web App. 웹사이트를 앱처럼 설치·사용할 수 있게 하는 기술</td></tr>' +
         '<tr><td><strong>MVP</strong></td><td>Minimum Viable Product. 최소 기능으로 먼저 출시해 검증하는 방식</td></tr>' +
         '</tbody>' +
