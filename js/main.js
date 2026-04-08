@@ -1,16 +1,18 @@
 // Section configuration - matches markdown files
 const sections = [
     { id: 'summary', title: '1. 검토 자료 핵심 메시지', mdFile: 'content/01-summary.md' },
-    { id: 'checklist', title: '2. 검토 항목', mdFile: 'content/02-checklist.md' },
-    { id: 'comparison', title: '3. 대안 비교표', mdFile: 'content/03-comparison.md' },
-    { id: 'pwa-recommendation', title: 'PWA 우선 검토 권고', mdFile: 'content/04-pwa-recommendation.md' },
-    { id: 'criteria', title: '4. 앱 도입 필요성 판단 기준', mdFile: 'content/05-criteria.md' },
-    { id: 'metrics', title: '5. 수집해야 할 정량 데이터', mdFile: 'content/06-metrics.md' },
-    { id: 'security', title: '6. 보안·품질·정책 부담', mdFile: 'content/07-security.md' },
-    { id: 'cost', title: '7. 비용 산정 기준', mdFile: 'content/08-cost.md' },
-    { id: 'conclusion', title: '8. 보고서 결론', mdFile: 'content/09-conclusion.md' },
-    { id: 'benchmark', title: '9. 벤치마킹 및 사례', mdFile: 'content/11-benchmark.md' },
-    { id: 'roadmap', title: '10. 추천 추진 순서', mdFile: 'content/10-roadmap.md' }
+    { id: 'app-types', title: '2. 모바일 앱의 이해: 유형별 특징', mdFile: 'content/00-app-types.md' },
+    { id: 'checklist', title: '3. 검토 항목', mdFile: 'content/02-checklist.md' },
+    { id: 'comparison', title: '4. 대안 비교표', mdFile: 'content/03-comparison.md' },
+    { id: 'pwa-recommendation', title: '5. PWA 우선 검토 권고', mdFile: 'content/04-pwa-recommendation.md' },
+    { id: 'criteria', title: '6. 앱 도입 필요성 판단 기준', mdFile: 'content/05-criteria.md' },
+    { id: 'metrics', title: '7. 수집해야 할 정량 데이터', mdFile: 'content/06-metrics.md' },
+    { id: 'security', title: '8. 보안·품질·정책 부담', mdFile: 'content/07-security.md' },
+    { id: 'cost', title: '9. 비용 산정 기준', mdFile: 'content/08-cost.md' },
+    { id: 'real-data', title: '10. 실증 자료: 하이브리드 앱 전환', mdFile: 'content/08-1-real-data.md' },
+    { id: 'conclusion', title: '11. 보고서 결론', mdFile: 'content/09-conclusion.md' },
+    { id: 'benchmark', title: '12. 벤치마킹 및 사례', mdFile: 'content/11-benchmark.md' },
+    { id: 'roadmap', title: '13. 추천 추진 순서', mdFile: 'content/10-roadmap.md' }
 ];
 
 // Mermaid diagrams
