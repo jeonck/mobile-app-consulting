@@ -239,6 +239,45 @@ section h2:first-child, section h3:first-child, section h4:first-child {
     height: auto;
 }
 
+.mermaid-glossary {
+    margin: 1.5rem 0 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #eff6ff;
+    border-radius: var(--radius);
+    border: 1px solid var(--primary-light);
+}
+
+.mermaid-glossary h3 {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+}
+
+.mermaid-glossary table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.mermaid-glossary th, .mermaid-glossary td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.mermaid-glossary th {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 600;
+    white-space: nowrap;
+    width: 180px;
+}
+
+.mermaid-glossary td {
+    line-height: 1.6;
+}
+
 #mermaid-diagrams h2 {
     font-size: 1.3rem;
     color: var(--primary);

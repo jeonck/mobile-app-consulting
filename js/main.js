@@ -26,7 +26,7 @@ const mermaidDiagrams = {
     F -->|"Yes"| H{"예산/운영인력 확보 가능한가?"}
     F -->|"No"| I["PWA 전환 권장"]
     H -->|"Yes"| J["크로스플랫폼 앱 MVP 개발"]
-    H -->|"No"| K["앱 래핑/TWA 권장"]
+    H -->|"No"| K["앱 패키징 권장(WebView/TWA)"]
     G --> L["1단계 완료"]
     I --> L
     J --> M["4단계: 점진적 확대"]
@@ -103,6 +103,19 @@ async function renderMermaidDiagrams() {
         '<h2>의사결정 흐름도</h2>' +
         '<div class="mermaid">' +
         mermaidDiagrams.decisionFlow +
+        '</div>' +
+        '<div class="mermaid-glossary">' +
+        '<h3>용어 설명</h3>' +
+        '<table>' +
+        '<thead><tr><th>용어</th><th>설명</th></tr></thead>' +
+        '<tbody>' +
+        '<tr><td><strong>앱 패키징</strong><br>(WebView/TWA)</td><td>기존 웹사이트를 앱 형태로 감싸는 방식입니다.<br>' +
+        '<strong>WebView</strong>: 웹페이지를 앱 안에 표시하는 간단한 방식<br>' +
+        '<strong>TWA</strong>(Trusted Web Activity): Android 공식 기술로 PWA를 앱처럼 완전 지원</td></tr>' +
+        '<tr><td><strong>PWA</strong></td><td>Progressive Web App. 웹사이트를 앱처럼 설치·사용할 수 있게 하는 기술</td></tr>' +
+        '<tr><td><strong>MVP</strong></td><td>Minimum Viable Product. 최소 기능으로 먼저 출시해 검증하는 방식</td></tr>' +
+        '</tbody>' +
+        '</table>' +
         '</div>' +
         '<h2>대안 비교 차트</h2>' +
         '<div class="mermaid">' +
