@@ -1,0 +1,427 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #dbeafe;
+    --secondary: #059669;
+    --accent: #f59e0b;
+    --danger: #dc2626;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f9fafb;
+    --white: #ffffff;
+    --border: #e5e7eb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-lg: 0 4px 6px rgba(0,0,0,0.1);
+    --radius: 8px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ===== Header ===== */
+.header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ===== Table of Contents ===== */
+.toc {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.toc h2 {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.toc ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.toc a {
+    display: block;
+    padding: 0.4rem 0.8rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.toc a:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* ===== Main Content ===== */
+#content {
+    padding: 2.5rem 0;
+}
+
+.section {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.section h3 {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin: 1.5rem 0 1rem;
+}
+
+.section h4 {
+    font-size: 1.05rem;
+    margin: 1.25rem 0 0.75rem;
+    color: var(--secondary);
+}
+
+.section p {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.section ul, .section ol {
+    margin: 1rem 0 1rem 1.5rem;
+}
+
+.section li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Tables ===== */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+section th, section td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+
+section th {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+section tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+section tr:hover {
+    background: #eff6ff;
+}
+
+/* 테이블 다음 제목 간격 확보 */
+section table {
+    margin-bottom: 2rem;
+}
+
+section h2, section h3, section h4 {
+    margin-top: 1.5rem;
+}
+
+section h2:first-child, section h3:first-child, section h4:first-child {
+    margin-top: 0;
+}
+
+/* ===== Callout Boxes ===== */
+.callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+}
+
+.callout-info {
+    background: #eff6ff;
+    border-color: var(--primary);
+}
+
+.callout-success {
+    background: #ecfdf5;
+    border-color: var(--secondary);
+}
+
+.callout-warning {
+    background: #fffbeb;
+    border-color: var(--accent);
+}
+
+.callout-danger {
+    background: #fef2f2;
+    border-color: var(--danger);
+}
+
+.callout-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Mermaid Diagram ===== */
+.mermaid {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: var(--radius);
+    overflow-x: auto;
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+#mermaid-diagrams h2 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+#mermaid-diagrams h2:first-child {
+    margin-top: 0;
+}
+
+/* ===== Badge Tags ===== */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.badge-app {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-web {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.badge-pwa {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* ===== Metric Cards ===== */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.metric-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.metric-card .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.metric-card .label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+/* ===== Roadmap Timeline ===== */
+.roadmap {
+    position: relative;
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+}
+
+.roadmap::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-light);
+}
+
+.roadmap-item {
+    position: relative;
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+}
+
+.roadmap-item::before {
+    content: '';
+    position: absolute;
+    left: -1.85rem;
+    top: 1.25rem;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+}
+
+.roadmap-step {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.roadmap-item h4 {
+    margin: 0.25rem 0;
+}
+
+/* ===== Cost Cards ===== */
+.cost-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.cost-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.cost-header {
+    background: var(--primary-light);
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.cost-body {
+    padding: 1.25rem;
+}
+
+.cost-body .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.cost-body ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: var(--text);
+    color: #9ca3af;
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.85rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .toc ul {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+    }
+    
+    .section {
+        padding: 1.25rem;
+    }
+    
+    .metric-grid, .cost-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    table {
+        font-size: 0.8rem;
+    }
+}

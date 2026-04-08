@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일앱 도입 타당성 컨설팅</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+        window.mermaidInstance = mermaid;
+
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose',
+            fontFamily: '-apple-system, BlinkMacSystemFont, Noto Sans KR, sans-serif',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            quadrantChart: {
+                chartWidth: 600,
+                chartHeight: 400
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>모바일앱 도입 타당성 컨설팅</h1>
+            <p class="subtitle">모바일웹 기반 서비스의 앱 전환 분석 리포트</p>
+        </div>
+    </header>
+
+    <nav class="toc">
+        <div class="container">
+            <h2>목차</h2>
+            <ul id="toc-list"></ul>
+        </div>
+    </nav>
+
+    <main class="container" id="content">
+        <!-- Content will be loaded from markdown files -->
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>모바일앱 도입 타당성 컨설팅 리포트 &copy; 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
