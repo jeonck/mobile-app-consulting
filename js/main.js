@@ -265,14 +265,14 @@ async function renderContent() {
 document.addEventListener('DOMContentLoaded', function () {
     renderContent();
 
-    // Smooth scroll for TOC links (event delegation)
+    // Instant scroll for TOC links (event delegation)
     document.querySelector('.toc').addEventListener('click', function (e) {
         if (e.target.tagName === 'A') {
             e.preventDefault();
             var targetId = e.target.getAttribute('href').substring(1);
             var targetEl = document.getElementById(targetId);
             if (targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                targetEl.scrollIntoView({ behavior: 'instant', block: 'start' });
             }
         }
     });
