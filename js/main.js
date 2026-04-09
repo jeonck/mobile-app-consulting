@@ -180,6 +180,26 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
+// Render mermaid diagrams that came from markdown code blocks
+async function renderMarkdownMermaidDiagrams() {
+    var m = window.mermaidInstance;
+    if (!m) return;
+
+    var mermaidDivs = document.querySelectorAll('.section .mermaid');
+    for (var i = 0; i < mermaidDivs.length; i++) {
+        var el = mermaidDivs[i];
+        if (el.querySelector('svg')) continue; // Skip already rendered
+        var code = el.textContent.trim();
+        if (!code || code.length < 5) continue; // Skip empty or non-mermaid content
+        try {
+            var result = await m.render('md-mermaid-' + i, code);
+            el.innerHTML = result.svg;
+        } catch (e) {
+            console.error('Markdown Mermaid rendering error:', e);
+        }
+    }
+}
+
 // Render all sections
 async function renderContent() {
     var contentEl = document.getElementById('content');
@@ -205,6 +225,17 @@ async function renderContent() {
         sectionEl.id = section.id;
         sectionEl.innerHTML = markdownToHtml(mdContent);
 
+        // Convert markdown mermaid code blocks to mermaid divs
+        var codeBlocks = sectionEl.querySelectorAll('pre code.language-mermaid, pre code.mermaid');
+        for (var cb = 0; cb < codeBlocks.length; cb++) {
+            var codeBlock = codeBlocks[cb];
+            var pre = codeBlock.parentElement;
+            var mermaidDiv = document.createElement('div');
+            mermaidDiv.className = 'mermaid';
+            mermaidDiv.textContent = codeBlock.textContent;
+            pre.parentElement.replaceChild(mermaidDiv, pre);
+        }
+
         contentEl.appendChild(sectionEl);
     }
 
@@ -225,6 +256,9 @@ async function renderContent() {
 
     // Render Mermaid diagrams (mermaid already initialized in HTML)
     await renderMermaidDiagrams();
+
+    // Also render mermaid diagrams from markdown content
+    await renderMarkdownMermaidDiagrams();
 }
 
 // Initialize when DOM is ready
