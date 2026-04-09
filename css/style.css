@@ -185,7 +185,17 @@ section table {
 
 section h2, section h3, section h4 {
     margin-top: 1.5rem;
-    scroll-margin-top: 80px;
+    scroll-margin-top: 120px;
+}
+
+/* Sections also respect scroll margin */
+.section {
+    scroll-margin-top: 120px;
+    padding-top: 0.5rem;
+}
+
+.section:first-of-type {
+    padding-top: 0;
 }
 
 section h2:first-child, section h3:first-child, section h4:first-child {

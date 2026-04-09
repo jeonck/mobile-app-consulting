@@ -272,7 +272,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var targetId = e.target.getAttribute('href').substring(1);
             var targetEl = document.getElementById(targetId);
             if (targetEl) {
-                targetEl.scrollIntoView({ behavior: 'instant', block: 'start' });
+                var tocHeight = document.querySelector('.toc').offsetHeight;
+                var targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - tocHeight - 10;
+                window.scrollTo({ top: targetPos, behavior: 'instant' });
             }
         }
     });
