@@ -18,6 +18,33 @@ const sections = [
 
 // Mermaid diagrams
 const mermaidDiagrams = {
+    // Broad decision flow (general)
+    decisionFlowBroad: `graph TD
+    A["모바일 서비스 전략 수립"] --> B{"서비스 목적은?"}
+
+    B -->|"단순 조회·신청"| C1["모바일웹 고도화"]
+    B -->|"재방문·푸시·기기연동"| D1{"예산·운영인력 확보 가능한가?"}
+
+    D1 -->|"No"| E1["PWA 검토"]
+    D1 -->|"Yes"| F1{"네이티브 수준 성능 필수인가?"}
+
+    F1 -->|"Yes"| G1["네이티브 앱"]
+    F1 -->|"No"| H1{"기존 웹 자산 재활용 가능한가?"}
+
+    H1 -->|"Yes"| I1{"공동인증서 등 앱 전용 기능 필요한가?"}
+    H1 -->|"No"| J1["크로스플랫폼 MVP"]
+
+    I1 -->|"Yes"| K1["하이브리드 앱 (WebView+브릿지)"]
+    I1 -->|"No"| L1["앱 패키징 (WebView/TWA)"]
+
+    C1 --> M1["정기적 재평가"]
+    E1 --> M1
+    G1 --> N1["지속적 고도화"]
+    J1 --> N1
+    K1 --> M1
+    L1 --> M1`,
+
+    // Mobile-web specific flow (current context)
     decisionFlow: `graph TD
     A["모바일 서비스 분석 시작"] --> B{"현재 모바일웹 운영 중?"}
     B -->|"Yes"| C["이용 데이터 수집 2~3개월"]
@@ -118,8 +145,19 @@ async function renderMermaidDiagrams() {
 
     container.innerHTML =
         '<h2>의사결정 흐름도</h2>' +
+        '<div class="flow-tabs">' +
+        '<button class="flow-tab active" data-tab="tab-broad" onclick="switchFlowTab(this)">전체 의사결정 흐름</button>' +
+        '<button class="flow-tab" data-tab="tab-mobileweb" onclick="switchFlowTab(this)">모바일웹 전환 흐름</button>' +
+        '</div>' +
+        '<div class="flow-tab-content active" id="tab-broad">' +
+        '<div class="mermaid">' +
+        mermaidDiagrams.decisionFlowBroad +
+        '</div>' +
+        '</div>' +
+        '<div class="flow-tab-content" id="tab-mobileweb">' +
         '<div class="mermaid">' +
         mermaidDiagrams.decisionFlow +
+        '</div>' +
         '</div>' +
         '<div class="mermaid-glossary">' +
         '<h3>용어 설명</h3>' +
@@ -198,6 +236,24 @@ async function renderMarkdownMermaidDiagrams() {
             console.error('Markdown Mermaid rendering error:', e);
         }
     }
+}
+
+// Tab switching for flow diagrams
+function switchFlowTab(btn) {
+    var tabId = btn.getAttribute('data-tab');
+    // Remove active from all tabs and contents
+    var tabs = document.querySelectorAll('.flow-tab');
+    var contents = document.querySelectorAll('.flow-tab-content');
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+    }
+    for (var j = 0; j < contents.length; j++) {
+        contents[j].classList.remove('active');
+    }
+    // Add active to selected
+    btn.classList.add('active');
+    var target = document.getElementById(tabId);
+    if (target) target.classList.add('active');
 }
 
 // Render all sections

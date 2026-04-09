@@ -250,6 +250,55 @@ section h2:first-child, section h3:first-child, section h4:first-child {
     height: auto;
 }
 
+/* Flow tabs */
+.flow-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin: 1.5rem 0 0;
+}
+
+.flow-tab {
+    padding: 0.5rem 1.25rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-light);
+    border-bottom: none;
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.flow-tab:hover {
+    background: #bfdbfe;
+}
+
+.flow-tab.active {
+    background: #f8fafc;
+    color: var(--primary-dark);
+    border-color: var(--border);
+    font-weight: 600;
+}
+
+.flow-tab-content {
+    display: none;
+    border: 1px solid var(--border);
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 1.5rem;
+    background: #f8fafc;
+}
+
+.flow-tab-content.active {
+    display: block;
+}
+
+.flow-tab-content .mermaid {
+    margin: 0;
+    padding: 1rem;
+    background: transparent;
+}
+
 .mermaid-glossary {
     margin: 1.5rem 0 2.5rem;
     padding: 1.25rem 1.5rem;
