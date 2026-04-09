@@ -12,7 +12,8 @@ const sections = [
     { id: 'real-data', title: '10. 실증 자료: 하이브리드 앱 전환', mdFile: 'content/08-1-real-data.md' },
     { id: 'conclusion', title: '11. 보고서 결론', mdFile: 'content/09-conclusion.md' },
     { id: 'benchmark', title: '12. 벤치마킹 및 사례', mdFile: 'content/11-benchmark.md' },
-    { id: 'roadmap', title: '13. 추천 추진 순서', mdFile: 'content/10-roadmap.md' }
+    { id: 'case-study', title: '13. 사례 연구: A사 하이브리드 앱 전환 검토', mdFile: 'content/12-case-study.md' },
+    { id: 'roadmap', title: '14. 추천 추진 순서', mdFile: 'content/10-roadmap.md' }
 ];
 
 // Mermaid diagrams
