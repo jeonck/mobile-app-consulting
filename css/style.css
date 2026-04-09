@@ -58,7 +58,7 @@ body {
 .toc {
     background: var(--white);
     border-bottom: 1px solid var(--border);
-    padding: 1.5rem 0;
+    padding: 0.6rem 0 0.5rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -66,9 +66,9 @@ body {
 }
 
 .toc h2 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: var(--text-light);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
 }
 
 .toc ul {
@@ -185,6 +185,7 @@ section table {
 
 section h2, section h3, section h4 {
     margin-top: 1.5rem;
+    scroll-margin-top: 80px;
 }
 
 section h2:first-child, section h3:first-child, section h4:first-child {
